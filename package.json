@@ -1,0 +1,16 @@
+{
+  "name": "contextualize-react",
+  "version": "1.0.0",
+  "description": "A React Component Library for Contextualize, LLC. webpage design.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Contextualize, LLC.",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^18.0.9",
+    "react": "^18.1.0",
+    "typescript": "^4.6.4"
+  }
+}
