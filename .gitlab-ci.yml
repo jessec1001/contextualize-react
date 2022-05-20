@@ -6,7 +6,14 @@ publish:
   stage: publish
   script:
     - echo "${CI_SERVER_HOST} ${CI_PROJECT_ID} ${CI_JOB_TOKEN}"
-    - echo "//${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}" >> .npmrc
-    - echo "@contextualize:registry=//${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/" >> .npmrc
+    - echo "https://${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}" >> .npmrc
+    - echo "@contextualize:registry=https://${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/" >> .npmrc
     - cat .npmrc
     - npm publish --verbose
+
+pages:
+  script:
+    - npm run storybook-build
+  artifacts:
+    paths:
+      - public
