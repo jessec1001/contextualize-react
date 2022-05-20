@@ -12,6 +12,7 @@ publish:
     - npm publish --verbose
 
 pages:
+  stage: publish
   script:
     - npm run storybook-build
   artifacts:
