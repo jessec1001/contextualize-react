@@ -1,14 +1,22 @@
-image: node:latest
+default:
+  image: node:latest
+  before_script:
+    - npm ci --cache .npm --prefer-offline
+    - echo "@contextualize:registry=${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/npm/" >> .npmrc
+    - echo "${CI_API_V4_URL#https?}/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=\${CI_JOB_TOKEN}" >> .npmrc
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - .npm/
+
 stages:
   - publish
 
 publish:
   stage: publish
   script:
-    - echo "${CI_SERVER_HOST} ${CI_PROJECT_ID} ${CI_JOB_TOKEN}"
-    - echo "https://${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}" >> .npmrc
-    - echo "@contextualize:registry=https://${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/" >> .npmrc
     - cat .npmrc
+    - npm install
     - npm publish --verbose
 
 pages:
