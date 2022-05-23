@@ -1,0 +1,69 @@
+/* Make sure elements are sized as expected. */
+* {
+  box-sizing: border-box;
+}
+
+/* Make the core elements stretch to fit the entire page. */
+html,
+body,
+#root {
+  font-family: sans-serif;
+  margin: 0rem;
+  padding: 0rem;
+  width: 100%;
+  height: 100%;
+}
+
+/* Remove any spacing from all text elements. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+label,
+ol,
+ul,
+li,
+hr {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+
+ul:not([role]) > li {
+  margin-left: 1rem;
+}
+
+/* Some elements need to inherit colors so they don't get browser defaults. */
+button {
+  color: inherit;
+}
+
+/* Lists with a role should not be formatted with bullet points. */
+ol[role],
+ul[role] {
+  list-style: none;
+}
+
+/* Make interactables always have a pointer cursor. */
+button,
+a {
+  cursor: pointer;
+}
+
+/* Remove obnoxious default styles for buttons. */
+button {
+  appearance: none;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  cursor: pointer;
+}

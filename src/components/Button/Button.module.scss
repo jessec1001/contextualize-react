@@ -1,0 +1,24 @@
+.button {
+    /* Make the button appear elevated and rounded. */
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-offset);
+  
+    /* Give a decent amount of padding internally. */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.125em 0.25em;
+  
+    /* Add a slight transition delay for the button hover effect to take place. */
+    transition: filter 0.05s ease-in-out;
+  }
+  .button.outline {
+    /* Make outlined buttons have their text and border color change instead. */
+    background: none;
+    border: 1px solid;
+  }
+  .button.bulky {
+    /* Give bulky buttons more vertical heft. */
+    padding: 0.25em 0.25em;
+  }
+  

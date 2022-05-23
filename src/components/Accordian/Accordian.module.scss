@@ -1,0 +1,32 @@
+.header {
+  /* The header separates and centers items using a flexbox. */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggle {
+  /* We make sure that content inside the accordian toggler are centered. */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  /* We make the accordian toggler appear interactive. */
+  color: var(--color-stroke-lowlight);
+  cursor: pointer;
+}
+.toggle:hover {
+  /* We make the accordian toggler appear interactive. */
+  color: var(--color-stroke-normal);
+}
+
+.content {
+  /* Accordian content is shown when toggled. */
+  display: block;
+}
+.content:not(.toggled) {
+  /* Accordian content is hidden by default. */
+  display: none;
+}
