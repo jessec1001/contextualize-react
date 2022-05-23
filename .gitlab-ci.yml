@@ -15,13 +15,11 @@ stages:
 publish:
   stage: publish
   script:
-    - npm install
-    - npm publish --verbose
+    - npm publish
 
 pages:
   stage: publish
   script:
-    - npm install
     - npm run storybook-build
   artifacts:
     paths:
