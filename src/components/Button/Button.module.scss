@@ -1,24 +1,68 @@
 .button {
-    /* Make the button appear elevated and rounded. */
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-offset);
-  
-    /* Give a decent amount of padding internally. */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.125em 0.25em;
-  
-    /* Add a slight transition delay for the button hover effect to take place. */
-    transition: filter 0.05s ease-in-out;
+  line-height: 1em;
+  padding: 0.5em;
+  transition: {
+    property: width, height, opacity, filter, background-color, color,
+      border-radius, box-shadow;
+    duration: 0.25s;
+    timingfunction: ease-in-out;
   }
-  .button.outline {
-    /* Make outlined buttons have their text and border color change instead. */
+
+  // Ghost buttons should make their border visible rather than their background.
+  // Text buttons should not display a border.
+  &.variant-fill {
+    border: none;
+  }
+  &.variant-ghost {
     background: none;
-    border: 1px solid;
+    border: 2px solid;
+    padding: calc(0.5em - 2px);
   }
-  .button.bulky {
-    /* Give bulky buttons more vertical heft. */
-    padding: 0.25em 0.25em;
+  &.variant-text {
+    background: none;
+    border: none;
   }
-  
+
+  // Elevated buttons should have a shadow.
+  &.elevated {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  // Fixed width is handled by fixing a 4-button layout by default.
+  // This should mesh well with column layouts with a multiple of 2 columns.
+  &.fixed {
+    width: clamp(25%, 4em, 8em);
+  }
+
+  // Shapes of button.
+  &.shape-rectangle {
+    border: {
+      radius: 0px;
+    }
+  }
+  &.shape-rounded {
+    border: {
+      radius: 4px;
+    }
+  }
+  &.shape-pill {
+    border: {
+      radius: 2em;
+    }
+  }
+  &.shape-circle {
+    width: 2em;
+    height: 2em;
+    border: {
+      radius: 2em;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  &:hover {
+    filter: brightness(90%);
+  }
+}

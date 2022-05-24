@@ -1,29 +1,60 @@
-import React from "react";
+/**
+ * @file Defines the see {@link Button} component.
+ * @copyright Contextualize LLC. 2022
+ */
+
 import classNames from "classnames";
+import React from "react";
 import type { Colors } from "types";
 import styles from "./Button.module.scss";
-import baseStyles from "./ButtonBase.module.scss";
-import "styles/globals.module.scss";
-import "styles/reset.module.scss";
 import fgStyles from "styles/foreground.module.scss";
 import bgStyles from "styles/background.module.scss";
 
 /** The props used for the {@link Button} component. */
 interface ButtonProps extends React.ComponentProps<"button"> {
-  /** The color of the button. Defaults to primary. */
+  /**
+   * The color of the button.
+   * @default "primary"
+   */
   color?: Colors;
-  /** Whether the button should be rendered as an outline. Defaults to false. */
-  outline?: boolean;
-  /** The sizing of the butotn. */
-  sizing?: "normal" | "bulky";
+  /**
+   * The shape of the edges of the button.
+   * @default "rounded"
+   */
+  shape?: "rectangle" | "rounded" | "pill" | "circle";
+  /**
+   * The variant of the button style to use.
+   *
+   * - "fill": The background of the button is filled with the button color.
+   * - "ghost": The background of the button is transparent and the border and text are filled with the button color.
+   * - "outline": The background of the button is transparent and the text is filled with the button color.
+   * @default "fill"
+   */
+  variant?: "fill" | "ghost" | "text";
+  /**
+   * Whether the button should appear to be elevated.
+   * @default true
+   */
+  elevated?: boolean;
+  /**
+   * Whether the button should have a fixed width across all buttons.
+   * If fixed, a button will take up a width in [4em, 8em] up to 25% if possible.
+   * @default true
+   */
+  fixed?: boolean;
 }
 
-/** A simple button component that is filled visually. */
+/**
+ * A simple button component that is filled visually.
+ * @since 1.0.1
+ */
 const Button: React.FC<ButtonProps> = ({
   type = "button",
   color = "primary",
-  outline = false,
-  sizing = "normal",
+  shape = "pill",
+  variant = "fill",
+  elevated = true,
+  fixed = true,
   children,
   className,
   ...props
@@ -32,13 +63,14 @@ const Button: React.FC<ButtonProps> = ({
     <button
       type={type}
       className={classNames(
-        baseStyles.button,
         styles.button,
+        styles[`shape-${shape}`],
+        styles[`variant-${variant}`],
         {
-          [styles.outline]: outline,
-          [styles.bulky]: sizing === "bulky",
-          [fgStyles[color]]: outline,
-          [bgStyles[color]]: !outline,
+          [fgStyles[color]]: variant !== "fill",
+          [bgStyles[color]]: variant === "fill",
+          [styles.elevated]: elevated,
+          [styles.fixed]: fixed,
         },
         className
       )}
