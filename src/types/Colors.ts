@@ -3,7 +3,7 @@ type Colors =
   | "notify"
   | "info"
   | "warning"
-  | "error"
+  | "danger"
   | "muted"
   | "primary"
   | "secondary";

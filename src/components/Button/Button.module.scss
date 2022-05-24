@@ -25,7 +25,7 @@
 
   // Elevated buttons should have a shadow.
   &.elevated {
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0.5px 1px 4px rgba(0, 0, 0, 0.2);
   }
 
   // Fixed width is handled by fixing a 4-button layout by default.

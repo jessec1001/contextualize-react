@@ -1,0 +1,37 @@
+.buttonGroup {
+  display: inline-flex;
+  flex-direction: row;
+
+  // Make the button group fill its container if stretched.
+  &.stretch {
+    display: flex;
+    & > * {
+      flex-grow: 1;
+      margin: 0em;
+    }
+  }
+
+  // Add some padding between buttons when not connected.
+  &:not(.connected) {
+    & > *:not(:last-of-type) {
+      margin: {
+        right: 0.5em;
+      }
+    }
+  }
+
+  // Merge buttons together when connected.
+  &.connected {
+    & > * {
+      margin: 0em;
+      &:not(:last-of-type) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      &:not(:first-of-type) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}

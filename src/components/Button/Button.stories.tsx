@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Button from "./Button";
+import { Button } from "components";
 
 export default {
   title: "Components/Button",
@@ -47,10 +47,10 @@ ColorWarning.args = {
   color: "warning",
   fixed: true,
 };
-export const ColorError = Template.bind({});
-ColorError.args = {
-  children: "Error",
-  color: "error",
+export const ColorDanger = Template.bind({});
+ColorDanger.args = {
+  children: "Danger",
+  color: "danger",
   fixed: true,
 };
 

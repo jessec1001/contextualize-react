@@ -45,7 +45,7 @@ interface ButtonProps extends React.ComponentProps<"button"> {
 }
 
 /**
- * A simple button component that is filled visually.
+ * A component that renders a button with a variety of colors, shapes, and variants.
  * @since 1.0.1
  */
 const Button: React.FC<ButtonProps> = ({
