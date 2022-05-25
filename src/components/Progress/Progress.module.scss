@@ -52,6 +52,13 @@
   &[data-value] .progressInternal {
     width: calc(100% * var(--progress));
     height: 100%;
+
+    transition: {
+      property: width, height, opacity, background-color, color, border-radius,
+        box-shadow;
+      duration: 0.25s;
+      timing-function: ease-in-out;
+    }
   }
 
   &:not([data-value]).animated .progressInternal,

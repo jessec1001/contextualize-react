@@ -71,3 +71,26 @@ Disabled.args = {
   animated: false,
   disabled: true,
 };
+
+const FunctionalTemplate: ComponentStory<typeof Progress> = (args) => {
+  const [value, setValue] = React.useState(0);
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      const increase = Math.random() * 10;
+      setValue((value) => (value + increase) % 100);
+    }, 500);
+    return () => clearInterval(interval);
+  });
+  return <Progress value={value} {...args} />;
+};
+export const Functional = FunctionalTemplate.bind({});
+Functional.args = {
+  min: 0,
+  max: 100,
+
+  color: "info",
+  shape: "pill",
+  elevated: true,
+  animated: true,
+  disabled: false,
+};

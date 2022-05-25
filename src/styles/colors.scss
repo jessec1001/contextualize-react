@@ -1,0 +1,33 @@
+:root {
+  $color-dark: #222222;
+  $color-light: #dddddd;
+  $color-normal: #000000;
+  $color-notify: #6ab10d;
+  $color-info: #5aabf7;
+  $color-warning: #ffae00;
+  $color-danger: #ce221c;
+  $color-muted: #999999;
+
+  $lighten-amount: 40%;
+  $darken-amount: 40%;
+
+  --color-notify: #{$color-notify};
+  --color-notify-light: #{lighten($color-notify, $lighten-amount)};
+  --color-notify-dark: #{darken($color-notify, $darken-amount)};
+
+  --color-info: #{$color-info};
+  --color-info-light: #{lighten($color-info, $lighten-amount)};
+  --color-info-dark: #{darken($color-info, $darken-amount)};
+
+  --color-warning: #{$color-warning};
+  --color-warning-light: #{lighten($color-warning, $lighten-amount)};
+  --color-warning-dark: #{darken($color-warning, $darken-amount)};
+
+  --color-danger: #{$color-danger};
+  --color-danger-light: #{lighten($color-danger, $lighten-amount)};
+  --color-danger-dark: #{darken($color-danger, $darken-amount)};
+
+  --color-muted: #{$color-muted};
+  --color-muted-light: #{lighten($color-muted, $lighten-amount)};
+  --color-muted-dark: #{darken($color-muted, $darken-amount)};
+}

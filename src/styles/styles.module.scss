@@ -1,3 +1,6 @@
+@use "colors";
+@use "resets.module";
+
 /* Defines some global constants accessible throughout all elements. */
 html {
   /* Font constants */
@@ -17,12 +20,6 @@ html {
 }
 
 body {
-  --color-notify: #6ab10d;
-  --color-info: #5aabf7;
-  --color-warning: #ffae00;
-  --color-danger: #ce221c;
-  --color-muted: #999999;
-
   --color-stroke-dark: #222222;
   --color-stroke-light: #dddddd;
 

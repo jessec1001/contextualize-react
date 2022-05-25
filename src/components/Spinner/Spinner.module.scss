@@ -1,0 +1,31 @@
+.spinner {
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+
+  .spinnerPath {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 4;
+  }
+
+  // The animation used to spin the SVG.
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  // Indeterminate spinner.
+  &:not([data-value]) {
+    animation: spin 1s linear infinite;
+  }
+
+  // Add margins to a padded spinner.
+  &.padded {
+    margin: 0em 0.5em;
+  }
+}

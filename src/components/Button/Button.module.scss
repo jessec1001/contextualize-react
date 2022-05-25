@@ -1,6 +1,10 @@
 .button {
   // TODO: CSS Variables
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   line-height: 1em;
   padding: 0.5em;
   transition: {

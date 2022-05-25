@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Button } from "components";
+import { Spinner, Button } from "components";
 
 export default {
   title: "Components/Button",
@@ -72,4 +72,27 @@ VariantText.args = {
   variant: "text",
   size: "half",
   elevated: false,
+};
+
+const LoadingTemplate: ComponentStory<typeof Button> = (args) => {
+  const [loading, setLoading] = React.useState(false);
+  const handleClick = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  };
+
+  return (
+    <Button {...args} disabled={loading} onClick={handleClick}>
+      {loading && <Spinner padded />}Process Data
+    </Button>
+  );
+};
+
+export const Loading = LoadingTemplate.bind({});
+Loading.args = {
+  color: "info",
+  shape: "rectangle",
+  size: "half",
 };
