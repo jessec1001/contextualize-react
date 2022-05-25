@@ -19,7 +19,7 @@ interface ButtonProps extends React.ComponentProps<"button"> {
   color?: Colors;
   /**
    * The shape of the edges of the button.
-   * @default "rounded"
+   * @default "pill"
    */
   shape?: "rectangle" | "rounded" | "pill" | "circle";
   /**
@@ -32,16 +32,20 @@ interface ButtonProps extends React.ComponentProps<"button"> {
    */
   variant?: "fill" | "ghost" | "text";
   /**
+   * The size of the button.
+   *
+   * - "auto": The button will be sized based on the size of the text.
+   * - "half": The button will be sized to be 50% of the width of the container.
+   * - "full": The button will be sized to be 100% of the width of the container.
+   * @default "auto"
+   * @since 1.0.3
+   */
+  size?: "auto" | "half" | "full";
+  /**
    * Whether the button should appear to be elevated.
    * @default true
    */
   elevated?: boolean;
-  /**
-   * Whether the button should have a fixed width across all buttons.
-   * If fixed, a button will take up a width in [4em, 8em] up to 25% if possible.
-   * @default true
-   */
-  fixed?: boolean;
 }
 
 /**
@@ -53,8 +57,8 @@ const Button: React.FC<ButtonProps> = ({
   color = "primary",
   shape = "pill",
   variant = "fill",
+  size = "auto",
   elevated = true,
-  fixed = true,
   children,
   className,
   ...props
@@ -66,11 +70,11 @@ const Button: React.FC<ButtonProps> = ({
         styles.button,
         styles[`shape-${shape}`],
         styles[`variant-${variant}`],
+        styles[`size-${size}`],
         {
           [fgStyles[color]]: variant !== "fill",
           [bgStyles[color]]: variant === "fill",
           [styles.elevated]: elevated,
-          [styles.fixed]: fixed,
         },
         className
       )}

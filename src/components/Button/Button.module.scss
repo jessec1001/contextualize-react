@@ -1,11 +1,13 @@
 .button {
+  // TODO: CSS Variables
+
   line-height: 1em;
   padding: 0.5em;
   transition: {
-    property: width, height, opacity, filter, background-color, color,
-      border-radius, box-shadow;
+    property: min-width, width, min-height, height, opacity, filter,
+      background-color, color, border-radius, box-shadow;
     duration: 0.25s;
-    timingfunction: ease-in-out;
+    timing-function: ease-in-out;
   }
 
   // Ghost buttons should make their border visible rather than their background.
@@ -23,17 +25,24 @@
     border: none;
   }
 
+  // TODO: Create a mixin.
   // Elevated buttons should have a shadow.
   &.elevated {
-    box-shadow: 0.5px 1px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0.5px 1px 4px rgba(0, 0, 0, 0.25);
   }
 
-  // Fixed width is handled by fixing a 4-button layout by default.
-  // This should mesh well with column layouts with a multiple of 2 columns.
-  &.fixed {
-    width: clamp(25%, 4em, 8em);
+  // Sizes of button.
+  &.size-auto {
+    min-width: 0%;
+  }
+  &.size-half {
+    min-width: 50%;
+  }
+  &.size-full {
+    min-width: 100%;
   }
 
+  // TODO: Create a mixin?
   // Shapes of button.
   &.shape-rectangle {
     border: {
@@ -58,6 +67,8 @@
     }
   }
 
+  // TODO: Create a mixin.
+  // Pseudo-states of button.
   &:disabled {
     opacity: 0.5;
     pointer-events: none;

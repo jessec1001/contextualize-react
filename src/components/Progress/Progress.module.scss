@@ -1,0 +1,74 @@
+.progress {
+  // TODO: CSS Variables
+
+  --progress: 0;
+
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  height: 4px;
+  transition: {
+    property: width, height, opacity, background-color, color, border-radius,
+      box-shadow;
+    duration: 0.25s;
+    timing-function: ease-in-out;
+  }
+
+  // Animation for sliding animated progress bar.
+  @keyframes loop {
+    0% {
+      left: -8em;
+    }
+    100% {
+      left: calc(100% + 8em);
+    }
+  }
+
+  // TODO: Create a mixin.
+  // Elevated progress bars should have a shadow.
+  &.elevated {
+    box-shadow: 0.5px 1px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  // TODO: Create a mixin?
+  // Shapes of progress bar.
+  &.shape-rectangle {
+    border-radius: 0;
+  }
+  &.shape-rounded {
+    border-radius: 2px;
+  }
+  &.shape-pill {
+    border-radius: 4px;
+  }
+
+  // Indeterminate progress bar.
+  &:not([data-value]) .progressInternal {
+    width: 100%;
+    height: 100%;
+  }
+  // Determinate progress bar.
+  &[data-value] .progressInternal {
+    width: calc(100% * var(--progress));
+    height: 100%;
+  }
+
+  &:not([data-value]).animated .progressInternal,
+  &[data-value].animated .progressInternal {
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: #ffffff80;
+      width: 8em;
+      height: 100%;
+      animation: loop 2s linear infinite;
+    }
+  }
+
+  // TODO: Create a mixin.
+  // Pseudo-states of progress bar.
+  &.disabled {
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,192 @@
+/* Base area styling fills up the parent element and enables the tab bar and tab panel to fill space correctly. */
+.TabArea:not(.flex) {
+  width: 100%;
+  height: 100%;
+}
+.TabArea.flex {
+  flex: 1 1 0;
+}
+.TabArea.flex .TabPanel:not(.hidden) {
+  display: flex;
+}
+.TabArea.horizontal {
+  display: flex;
+  flex-direction: column;
+}
+.TabArea.vertical {
+  display: flex;
+  flex-direction: row;
+}
+
+.TabArea .TabBar {
+  flex: 0 0 auto;
+}
+.TabArea .TabPanel {
+  flex: 1 1 auto;
+}
+
+/* The orientation of the tab bar affects the styling of the individual tabs. */
+.TabArea.horizontal > .TabBar .Tab {
+  /* Force tabs to have some minimum size. */
+  min-width: 6rem;
+  min-height: initial;
+  padding: 0em 0.5em 0em 0em;
+
+  /* Add a division between tabs. */
+  border-right: 0.5px solid var(--color-stroke-hairline);
+
+  /* Tabs should have an indicator border at the top to display a status. */
+  border-top: 2px solid var(--status-color);
+}
+.TabArea.horizontal > .TabBar .Tab-Content {
+  margin: 0.5em;
+}
+.TabArea.vertical > .TabBar .Tab {
+  /* Force tabs to have some minimum size. */
+  min-height: 12ch;
+  min-width: initial;
+  padding: 0.5em 0.25em;
+
+  /* Add a division between tabs. */
+  border-top: 0.5px solid var(--color-stroke-hairline);
+
+  /* Tabs should have an indicator border at the top to display a status. */
+  border-right: 2px solid var(--status-color);
+
+  /* Vertical tab text should be vertical. */
+  text-orientation: mixed;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+}
+.TabArea.vertical > .TabBar .Tab-Content {
+  margin-top: 0.5em;
+}
+
+/* Active tabs need to have their overlay (blends with tab area) correctly positioned based on orientation. */
+.TabArea.horizontal .Tab::after {
+  left: 0;
+  right: initial;
+  top: 100%;
+  height: 1px;
+  width: 100%;
+}
+.TabArea.vertical .Tab::after {
+  left: initial;
+  right: 100%;
+  top: 0;
+  height: 100%;
+  width: 1px;
+}
+
+/* The colors of the tab bar should make it de-emphasized as a menu. */
+.TabBar {
+  background-color: var(--color-fill-element);
+  color: var(--color-stroke-lowlight);
+}
+
+.TabBar.drag {
+  background-color: var(--color-fill-overlay);
+}
+
+/* Make the tab bar scrollable without ruining the active tab effect. */
+.TabArea.horizontal .TabBar {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.TabArea.vertical .TabBar {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.TabArea.horizontal .TabBar-Wrapper {
+  /* A horizontal tab bar displays tabs in a row. */
+  display: inline-flex;
+  flex-direction: row;
+  min-width: 100%;
+  border-bottom: 0.5px solid var(--color-stroke-hairline);
+}
+.TabArea.vertical .TabBar-Wrapper {
+  /* A vertical tab bar displays tabs in a column. */
+  display: inline-flex;
+  flex-direction: column;
+  min-height: 100%;
+  border-right: 0.5px solid var(--color-stroke-hairline);
+}
+
+/* Tab bars should not have visible scroll bars. */
+.TabBar::-webkit-scrollbar {
+  display: none;
+}
+.TabBar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.TabPanel {
+  width: 100%;
+  height: 100%;
+}
+.TabPanel.hidden {
+  /* We hide the tab panel using styling rather than with script so state is not lost. */
+  display: none;
+}
+
+/* Base Styling */
+.Tab {
+  /* Give some spacing within the tab area to not feel cluttered. */
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  white-space: nowrap;
+  z-index: 0;
+
+  /* We setup a variable for color that dictates the status. */
+  --status-color: transparent;
+
+  /* Tabs should appear to be interactive. */
+  cursor: pointer;
+}
+.Tab.active {
+  background: linear-gradient(
+    to bottom,
+    var(--color-stroke-hairline) 1px,
+    var(--color-fill-body) 1px
+  );
+}
+.Tab::after {
+  content: "";
+  position: absolute;
+  display: block;
+  background-color: transparent;
+}
+.Tab.active::after {
+  background-color: var(--color-fill-body);
+}
+
+/* TODO: Eventually we might make the dragging more sophisticated with animated movement. */
+/* Drag target */
+.Tab.drag {
+  background-color: var(--color-fill-overlay);
+}
+
+/* Make the tab content take up as much room as necessary. */
+.Tab .Tab-Content {
+  flex-grow: 1;
+}
+
+/* Tab Indicators */
+.Tab.status-modified {
+  --status-color: var(--color-notify);
+}
+.Tab.status-unmodified {
+  --status-color: var(--color-muted);
+}
+.Tab.status-info {
+  --status-color: var(--color-info);
+}
+.Tab.status-warning {
+  --status-color: var(--color-warning);
+}
+.Tab.status-error {
+  --status-color: var(--color-error);
+}
