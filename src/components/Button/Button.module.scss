@@ -70,6 +70,20 @@
       radius: 2em;
     }
   }
+  &.shape-squircle {
+    width: 2em;
+    height: 2em;
+    border: {
+      radius: 4px;
+    }
+  }
+  &.shape-square {
+    width: 2em;
+    height: 2em;
+    border: {
+      radius: 0px;
+    }
+  }
 
   // TODO: Create a mixin.
   // Pseudo-states of button.

@@ -1,0 +1,22 @@
+.pagination {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .paginationSeparator {
+    width: 1em;
+    height: 1em;
+    margin: 0em 0.75em;
+  }
+  :not(.paginationSeparator) {
+    margin: 0em 0.25em;
+  }
+
+  // Stretching behavior of the pagination buttons.
+  & {
+    justify-content: center;
+  }
+  &.stretch {
+    justify-content: space-between;
+  }
+}

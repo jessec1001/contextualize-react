@@ -21,7 +21,7 @@ interface ButtonProps extends React.ComponentProps<"button"> {
    * The shape of the edges of the button.
    * @default "pill"
    */
-  shape?: "rectangle" | "rounded" | "pill" | "circle";
+  shape?: "rectangle" | "rounded" | "pill" | "square" | "squircle" | "circle";
   /**
    * The variant of the button style to use.
    *
