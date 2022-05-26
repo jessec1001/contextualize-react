@@ -72,7 +72,8 @@ const Button: React.FC<ButtonProps> = ({
         styles[`variant-${variant}`],
         styles[`size-${size}`],
         {
-          [fgStyles[color]]: variant !== "fill",
+          [fgStyles[`${color}`]]: variant !== "fill",
+          [fgStyles[`${color}-dark`]]: variant === "fill",
           [bgStyles[color]]: variant === "fill",
           [styles.elevated]: elevated,
         },

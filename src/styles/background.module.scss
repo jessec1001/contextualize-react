@@ -1,33 +1,66 @@
-.primary {
+.primary,
+.primary-light,
+.primary-dark {
   background-color: var(--color-fill-primary);
-  color: var(--color-stroke-primary);
 }
-.secondary {
+.secondary,
+.secondary-light,
+.secondary-dark {
   background-color: var(--color-fill-secondary);
-  color: var(--color-stroke-secondary);
 }
 
-.normal {
+.normal,
+.normal-light,
+.normal-dark {
   background-color: var(--color-fill-normal);
-  color: var(--color-stroke-normal);
 }
+
 .notify {
   background-color: var(--color-notify);
-  color: var(--color-notify-dark);
 }
+.notify-light {
+  background-color: var(--color-notify-light);
+}
+.notify-dark {
+  background-color: var(--color-notify-dark);
+}
+
 .info {
   background-color: var(--color-info);
-  color: var(--color-info-dark);
 }
+.info-light {
+  background-color: var(--color-info-light);
+}
+.info-dark {
+  background-color: var(--color-info-dark);
+}
+
 .warning {
   background-color: var(--color-warning);
-  color: var(--color-warning-dark);
 }
+.warning-light {
+  background-color: var(--color-warning-light);
+}
+.warning-dark {
+  background-color: var(--color-warning-dark);
+}
+
 .danger {
   background-color: var(--color-danger);
-  color: var(--color-danger-dark);
 }
+.danger-light {
+  background-color: var(--color-danger-light);
+}
+.danger-dark {
+  background-color: var(--color-danger-dark);
+}
+
 .muted {
   background-color: var(--color-muted);
-  color: var(--color-muted-dark);
+}
+.muted-light {
+  background-color: var(--color-muted-light);
+}
+.muted-dark {
+  background-color: var(--color-muted-dark);
 }

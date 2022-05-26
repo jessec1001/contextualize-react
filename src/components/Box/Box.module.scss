@@ -1,0 +1,50 @@
+.box {
+  padding: 1em;
+
+  // Add some accentuation to the side of the box.
+  &.accent-none {
+    border: none;
+  }
+  &.accent-solid,
+  &.accent-dashed,
+  &.accent-dotted {
+    border-left: {
+      width: 4px;
+    }
+  }
+  &.accent-solid {
+    border-left: {
+      style: solid;
+    }
+  }
+  &.accent-dashed {
+    border-left: {
+      style: dashed;
+    }
+  }
+  &.accent-dotted {
+    border-left: {
+      style: dotted;
+    }
+  }
+
+  // Shape of box.
+  &.shape-rectangle {
+    border-radius: 0px;
+  }
+  &.shape-rounded:not(.accent-none) {
+    border: {
+      top-left-radius: 0px;
+      bottom-left-radius: 0px;
+    }
+  }
+  &.shape-rounded {
+    border-radius: 4px;
+  }
+
+  // TODO: Create a mixin.
+  // Elevated boxes should have a shadow.
+  &.elevated {
+    box-shadow: 0.5px 1px 4px rgba(0, 0, 0, 0.25);
+  }
+}

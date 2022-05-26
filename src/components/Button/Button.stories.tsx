@@ -85,7 +85,8 @@ const LoadingTemplate: ComponentStory<typeof Button> = (args) => {
 
   return (
     <Button {...args} disabled={loading} onClick={handleClick}>
-      {loading && <Spinner padded />}Process Data
+      <Spinner padded style={{ display: loading ? "unset" : "none" }} />
+      Process Data
     </Button>
   );
 };
